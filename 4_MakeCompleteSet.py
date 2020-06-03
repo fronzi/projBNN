@@ -1,37 +1,29 @@
+### run this script in two times by commenting and uncommenting phase1 and phase2
+
+
 import pandas as pd
 import csv
 import sys
 
-filepath0='./1l_atomicPLMF_6138structures.csv'
+filepath0='./1l_atomicPLMF_773structures.csv'
 
-path = './LASSO_BR2_BEST_extended'
+path = './LASSO_BR2_1/'
 
-#filepath1=str(path)+'/lasso_fields.csv'
-filepath2= str(path)+'/Monolayers6138_FeatSel.csv'
-
-
+filepath1=str(path)+'/lasso_fields.csv'
+filepath2= str(path)+'/Monolayers773_FeatSel.csv'
 
 
+lasso = pd.read_csv(filepath1,header=None,delimiter=',')
+
+fields = lasso.iloc[:,0]
+
+
+
+
+###### select monolayers features 
+##########phase 1##############################################################
 #mydata=pd.read_csv(filepath0,header=None,delimiter=',')
-mydata2=pd.read_csv(filepath2,header=None,delimiter=',')
-
 #rows,columns=mydata.shape
-rows,NewColumns=mydata2.shape 
-
-
-#lasso = pd.read_csv(filepath1,header=None,delimiter=',')
-
-#fields = lasso.iloc[:,0]
-
-#print(rows,NewColumns)
-
-#sys.exit(-1)
-
-#print(mydata2.shape )
-#print(mydata2)
-#print(fields)
-
-##########phase 2##############################################################
 
 #finalT=[]
 ##for i in fields:
@@ -45,9 +37,17 @@ rows,NewColumns=mydata2.shape
 #            print(mydata.iloc[i,0],k)
 #        finalT.append(row)
 #df=pd.DataFrame(finalT)
-#df.to_csv(str(path)+"Monolayers6138_FeatSel.csv", sep=',', index=False,header=False)
+#df.to_csv(str(path)+"Monolayers773_FeatSel.csv", sep=',', index=False,header=False)
+###################################################################################
 
-##########phase 1##############################################################
+
+
+###### sum monolayers features and create bilayers features###################
+##########phase 2##############################################################
+mydata2=pd.read_csv(filepath2,header=None,delimiter=',')
+rows,NewColumns=mydata2.shape 
+
+
 
 final=[]
 for i in range(0,rows-1):
@@ -60,8 +60,8 @@ for i in range(0,rows-1):
 #        print(i,j,k)
         final.append(row)
 df=pd.DataFrame(final)
-df.to_csv(str(path)+"/LARGE_DL_SET.csv", sep=',', index=False,header=False)
-
+df.to_csv(str(path)+"/18Mset.csv", sep=',', index=False,header=False)
+###################################################################################
 
 
 
