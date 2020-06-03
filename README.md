@@ -30,3 +30,5 @@ model_prob control the probability of nodes dropout.
 6_BnnPredict.py takes the model and the COMPETE_SET.csv to generate a response value for the whole dataset.  
 
 1l_atomicPLMF_773structures.csv and C33.csv can be used as example input file to run the calculations from scratch
+
+in the requirement.txt file are listed all the requirements of the scripts
