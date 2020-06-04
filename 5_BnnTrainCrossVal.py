@@ -20,7 +20,7 @@ import sys
 from sklearn.model_selection import StratifiedKFold
 
 
-
+#######################
  
 
 def run_train(session, train_x, train_y):
@@ -76,12 +76,12 @@ class VariationalDense:
         )
 
 
-count=999
-path = './LASSO_BR2_BEST_extended/'
+count=0
+path = './LASSO_BR2_1/'
 
 train_df = pd.read_csv(str(path)+"kmeans_randomized_trainingset_0_unindexed.csv",header=None)
 test_df = pd.read_csv(str(path)+"kmeans_randomized_testset_0_unindexed.csv",header=None)
-test_train_df = pd.read_csv(str(path)+"LARGE_DL_SET.csv",header=None)
+test_train_df = pd.read_csv(str(path)+"FULL_SET.csv",header=None)
 
 
 
@@ -100,9 +100,12 @@ X_pred = test_df.iloc[:,0:numColumns-1]
 y_pred = test_df.iloc[:,numColumns-1]
 
 
+#######Write some analysis of the the bilayers descriptors 
+
 X.describe().to_csv(str(path)+'X_train_stat.csv')
 X_pred.describe().to_csv(str(path)+'X_test_stat.csv')
-X_training_test.describe().to_csv(str(path)+'LARGE_DL_SET_stat.csv')
+X_training_test.describe().to_csv(str(path)+'FULL_SET_stat.csv')
+
 ######################
 
 
@@ -113,16 +116,9 @@ X = pd.DataFrame(scaler.transform(X), index=X.index.values, columns=X.columns.va
 X_pred = pd.DataFrame(scaler.transform(X_pred), index=X_pred.index.values, columns=X_pred.columns.values)
 X_training_test = pd.DataFrame(scaler.transform(X_training_test), index=X_training_test.index.values, columns=X_training_test.columns.values)
 
-
-
 n_samples =  X.shape[0]
 
-
-
-
 # Create the TensorFlow model.
-
-
 
 n_feats = X.shape[1]
 n_hidden = 128
@@ -155,7 +151,8 @@ model_loss = (
         model_L_3.regularization
         ) / n_samples
 
- 
+#################################################
+##### start optimization 
 
 train_step = tf.train.AdamOptimizer(1e-3).minimize(model_loss)
 saver = tf.train.Saver() 
@@ -181,7 +178,8 @@ with tf.Session() as sess:
             r2=r2_score(y_pred, Y_post_mean)
 
             print("Iteration {}. Train MSE: {:.6f}. Val MSE: {:.6f} Val R2:{:.6f}".format(i, mse,vmse,r2))
-
+            
+  ######### save best model on the fly
             #if vmse<bmse:
             if br2<r2:
                 # Sample from the posterior test set
