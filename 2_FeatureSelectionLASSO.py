@@ -56,8 +56,8 @@ else:
 pd.options.mode.chained_assignment = None 
 pd.set_option('display.max_columns', 3000)
 
-monolayer_descriptors = pd.read_csv("1l_atomicPLMF_"+str(Number_Monolayers)+"structures.csv",header=0) # read file with monolayers names and descriptors 
-titles = pd.read_csv("1l_atomicPLMF_"+str(Number_Monolayers)+"structures.csv",header=None)
+monolayer_descriptors = pd.read_csv("l_atomicPLMF_"+str(Number_Monolayers)+"structures.csv",header=0) # read file with monolayers names and descriptors 
+titles = pd.read_csv("l_atomicPLMF_"+str(Number_Monolayers)+"structures.csv",header=None)
 numMonolayerColumns = monolayer_descriptors.shape[1] 
 numMonolayerRecords = monolayer_descriptors.shape[0] 
 
