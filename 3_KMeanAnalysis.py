@@ -24,27 +24,26 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.preprocessing import binarize
 
-path = './LASSO_BR2_9/'
+path = './LASSO_BR2_1/'
 
+#select the number of cluster that are formed to select structure for the train and test set
 n_clus = 3
 
+#########read data input 
+
 train_df = pd.read_csv(str(path)+"BR2_training-test_set.csv",header=None)
-#train_df = pd.read_csv("TOTAL_SET_PREDICTION_RF.csv",header=None)
 numColumns = train_df.shape[1]
 x_reduced = train_df.iloc[:,0:numColumns-1]
 y_reduced = train_df.iloc[:,numColumns-1]
 
-#k-means of data set to extract test set
-
+#############k-means of data set to extract test set
 
 from sklearn.cluster import KMeans
 kmeans = KMeans(n_clusters=n_clus, random_state=None).fit(x_reduced,y_reduced)
 for i in range(x_reduced.shape[0]):
     print(y_reduced.iloc[i],kmeans.labels_[i])
 
-#Silhouette sampling
-
-    
+##################Silhouette sampling    
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_samples, silhouette_score
 import matplotlib.cm as cm
@@ -135,16 +134,11 @@ for n_clusters in range_n_clusters:
     plt.savefig(str(path)+'DataSet Silhouette '+str(n_clusters), bbox_inches='tight')
     
     
-    
-
+   
 ########################################################################################################################
 ########################################################################################################################
 ########################################################################################################################
-#Selecting the number of clusters with the elbow method
-########################################################################################################################
-########################################################################################################################
-########################################################################################################################
-
+#######Selecting the number of clusters with the elbow method
 #from yellowbrick.cluster import KElbowVisualizer
 
 #model = KMeans()
@@ -167,7 +161,7 @@ plt.show()
 ########################################################################################################################
 ########################################################################################################################
 ########################################################################################################################
-#Create randomized k-means training and test sets
+########Create randomized k-means training and test sets
 ########################################################################################################################
 ########################################################################################################################
 ########################################################################################################################
@@ -309,6 +303,9 @@ kmeansTrainingSet_df=kmeansTrainingSet_df.append(trainingportion)
 #kmeansTestSet_df=kmeansTestSet_df.append(testportion)
 #kmeansTrainingSet_df=kmeansTrainingSet_df.append(trainingportion)
 #print(cluster10.shape,kmeansTestSet_df.shape,int(cluster10Portion))
+
+
+##########write selected bilayers to files in double copy (indexed and non indexed) 
 
 
 kmeansTrainingSet_df.to_csv(str(path)+"kmeans_randomized_trainingset_"+str(count)+"_indexed.csv",header=False)
