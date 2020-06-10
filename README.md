@@ -17,7 +17,8 @@ alphas and n_alpha in the 2_FeatureSelectionLASSO.py
 3_KMeanAnalysis.py takes training.csv file and using a cluster analysis will generate a train and test set choosing representative bilayer structures. 
 
 
-4_MakeCompleteSet.py select the descriptors listed after 2_FeatureSelectionLASSO.py and create a PLMF file of the full set of bilayers
+4_MakeCompleteSet.py select the descriptors listed after 2_FeatureSelectionLASSO.py and create a PLMF file of the full set of bilayers. 
+Thisscript shold be executed in two times as explained in the comments in MakeCompleteSet.py
 
 5_BnnTrainCrossVal.py is the core code and it is used to train the Bayesisn neaural network and then test it by cross-validation.  
 This part needs a list of descriptors for the whole set that will be used in the extrapolation. This allows the standardisation of each bilayer descriptor using the whole set as reference. Therefore, 
