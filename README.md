@@ -8,10 +8,11 @@ Modify:
 Number_Monolayers  with the number of monolayers included in the PLMF.csv file
 path  to the working folder (it will be created if it does not exist)
 
-2_FeatureSelectionLASSO.py takes input the .csv file with the values bilayer property that will be used in BNN training
+2a_FeatureSelectionLASSO.py takes input the .csv file with the values bilayer property that will be used in BNN training
 and the PLMF.csv file to select relevant bilayers descriptors. This will produce a training_set.csv.
 Modify:
 alphas and n_alpha in the 2_FeatureSelectionLASSO.py 
+2b_FeatureSelectionGeneticAlgo.py can be optionally executed if the number of features is too large. 
  	
 
 3_KMeanAnalysis.py takes training.csv file and using a cluster analysis will generate a train and test set choosing representative bilayer structures. 
