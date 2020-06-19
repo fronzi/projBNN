@@ -217,10 +217,6 @@ Y_post_std=   Y_post_val.std(axis=0)
 #print(Y_post_val.mean(axis=0), Y_post_val.std(axis=0))
 
 
-print('R2-VAL:',r2_score(y_pred, Y_post_mean))
-print('MSE-VAL:',mean_squared_error(y_pred, Y_post_mean))
-print('MAE-VAL:',mean_absolute_error(y_pred, Y_post_mean))
-
 
 
         
@@ -269,11 +265,6 @@ if True:
 Y_post_mean = Y_post_train.mean(axis=0)
 Y_post_std=   Y_post_train.std(axis=0)
 #print(Y_post_train.mean(axis=0), Y_post_train.std(axis=0))
-
-
-print('R2-TRAIN:',r2_score(y, Y_post_mean))
-print('MSE-TRAIN:',mean_squared_error(y, Y_post_mean))
-print('MAE_TRAIN:',mean_absolute_error(y, Y_post_mean))
 
 
         
