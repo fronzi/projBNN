@@ -31,7 +31,7 @@ color = sns.color_palette()
 
 Number_Monolayers = 773
 
-path = './LASSO_BR2_9/'
+path = './LASSO_BR2_1/'
 
 n_alpha = 2
 
@@ -73,7 +73,7 @@ bilayers = BilayerProperty.iloc[:,0]
 monolayers = monolayer_descriptors.iloc[:,0]
 
 
-df_dataset=pd.read_csv("PLMF.csv",header=0)
+df_dataset=pd.read_csv("LASSO_BR2_1/PLMF.csv",header=0)
 
 
 
