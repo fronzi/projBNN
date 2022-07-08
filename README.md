@@ -1,8 +1,6 @@
 # projBNN
 Bayesian Neural Networks (Dropout)
-
-Each file can be run independently on any Python interpreter (3.6.8)
-
+Workflow:
 1_MakePlmfBilayers.py takes a 1l_atomicPLMF_773structures.csv (which contains the full list of descriptors of 2d-monolayers) and C33.csv files and creates the descriptors of the bilayers by summing the fields of each monolayer.
 Modify: 
 Number_Monolayers  with the number of monolayers included in the PLMF.csv file
@@ -32,5 +30,3 @@ model_prob control the probability of nodes dropout.
 6_BnnPredict.py takes the model and the COMPETE_SET.csv to generate a response value for the whole dataset.  
 
 1l_atomicPLMF_773structures.csv and C33.csv can be used as example input file to run the calculations from scratch
-
-in the requirement.txt file are listed all the requirements of the scripts
