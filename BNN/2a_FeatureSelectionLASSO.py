@@ -73,7 +73,7 @@ bilayers = BilayerProperty.iloc[:,0]
 monolayers = monolayer_descriptors.iloc[:,0]
 
 
-df_dataset=pd.read_csv("LASSO_BR2_1/PLMF.csv",header=0)
+df_dataset=pd.read_csv("path = './data_proc/PLMF.csv",header=0)
 
 
 
