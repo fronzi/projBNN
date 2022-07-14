@@ -1,6 +1,6 @@
-# BNN
+# 2D-BNN
 
-BNN is a bayesian neural network python code to predict the properties of large sets of 2-dimesional materials. 
+2D-BNN is a bayesian neural network python code to predict the properties of large sets of 2-dimesional materials. 
 
 
 # How to use 
