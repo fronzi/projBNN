@@ -24,7 +24,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.preprocessing import binarize
 
-path = './LASSO_BR2_1/'
+path = './data_proc/'
 
 #select the number of cluster that are formed to select structure for the train and test set
 n_clus = 3
