@@ -5,9 +5,9 @@ BNN is a bayesian neural network python code to predict the properties of large 
 
 # How to use 
 
-The code contains a few pre-processing sub-routines and the Bayesian Neural Network is implemented in BNN_train_cross_val.py. 
+The code in ./2D-BNN contains a few pre-processing sub-routines and the Bayesian Neural Network is implemented in BNN_train_cross_val.py. 
 The model can be loaded and run by BNN_predict.py
-1l_atomicPLMF_773structures.csv and C33.csv can be used as example input file to run the calculations from scratch. 
+1l_atomicPLMF_773structures.csv and C33.csv in ./input_example can be used as example input file to run the calculations from scratch. 
 
 Workflow
 Pre-preocessing data:
