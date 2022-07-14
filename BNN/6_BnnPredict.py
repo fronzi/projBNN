@@ -23,7 +23,7 @@ from sklearn.model_selection import StratifiedKFold
 
 
 count=2
-path = './LASSO_BR2_1'
+path = './data_proc/'
 
 test_train_df = pd.read_csv(str(path)+"LARGE_DL_SET.csv",header=None)
 
