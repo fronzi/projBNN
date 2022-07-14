@@ -7,7 +7,7 @@ import sys
 
 filepath0='./1l_atomicPLMF_773structures.csv'
 
-path = './LASSO_BR2_1/'
+path = './data_proc/'
 
 filepath1=str(path)+'/lasso_fields.csv'
 filepath2= str(path)+'/Monolayers773_FeatSel.csv'
