@@ -27,7 +27,7 @@ color = sns.color_palette()
 
 Number_Monolayers = 6084
 
-path = './LASSO/'
+path = './data_proc/'
 
 
 
