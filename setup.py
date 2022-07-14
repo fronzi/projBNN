@@ -9,9 +9,9 @@ setuptools.setup(
      version='0.1',
      scripts=['bnn'] ,
      author="Marco Fronzi",
-     author_email="marco.fronzi@.com",
+     author_email="",
      description="UNDER CONSTRUCTION",
-    url='https://github.com/fronzi/projBNN/tree/master/BNN',
+    url='',
     keywords=['Machine Learning'],
     install_requires=['requirements.txt'],
 
