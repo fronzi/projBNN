@@ -4,11 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from itertools import cycle
 
-from sklearn import svm, datasets
-from sklearn.metrics import roc_curve, auc
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import label_binarize
-from sklearn.multiclass import OneVsRestClassifier
+from sklearn import datasets
 from scipy import interp
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
@@ -20,8 +16,6 @@ from sklearn.linear_model import LassoCV
 from sklearn.linear_model import Lasso
 from sklearn.model_selection import KFold
 from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import mean_squared_error, r2_score
-from sklearn.preprocessing import binarize
 import os
 import sys
 
@@ -33,7 +27,7 @@ color = sns.color_palette()
 
 Number_Monolayers = 6084
 
-path = './LASSO_BR2_002/'
+path = './LASSO/'
 
 
 
@@ -47,7 +41,7 @@ if not os.path.exists(path):
     os.mkdir(path+'/DATA_SETS/')
     os.mkdir(path+'/Figs/')
     os.mkdir(path+'/SavedModels/')
-    os.mkdir(path+'/LASSO_Converged/')
+    os.mkdir(path+'/Converged/')
     print("Directory " , path ,  " Created ")
 else:    
     print("Directory " , path ,  " already exists")
