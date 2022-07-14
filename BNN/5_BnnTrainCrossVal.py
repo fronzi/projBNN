@@ -77,7 +77,7 @@ class VariationalDense:
 
 
 count=0
-path = './LASSO_BR2_1/'
+path = './data_proc/'
 
 train_df = pd.read_csv(str(path)+"kmeans_randomized_trainingset_0_unindexed.csv",header=None)
 test_df = pd.read_csv(str(path)+"kmeans_randomized_testset_0_unindexed.csv",header=None)
