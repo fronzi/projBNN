@@ -19,7 +19,7 @@ from genetic_selection import GeneticSelectionCV
 import pandas as pd
 
 Number_Monolayers = 773
-path = './LASSO_BR2_5/'
+path = './data_proc/'
 
 
 
@@ -29,7 +29,7 @@ if not os.path.exists(path):
     os.mkdir(path+'/DATA_SETS/')
     os.mkdir(path+'/Figs/')
     os.mkdir(path+'/SavedModels/')
-    os.mkdir(path+'/LASSO_Converged/')
+    os.mkdir(path+'/Converged/')
     print("Directory " , path ,  " Created ")
 else:    
     print("Directory " , path ,  " already exists")
