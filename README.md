@@ -1,47 +1,34 @@
-# 2D-BNN
+# 2D-BNN User Guide
 
-2D-BNN is a bayesian neural network python code to predict the properties of large sets of 2-dimesional materials. 
+This guide will help you navigate the 2D-BNN Bayesian Neural Network Python code. This code is designed to predict the properties of large sets of 2-dimensional materials.
 
+## Getting Started
 
-# How to use 
+The 2D-BNN directory contains several pre-processing sub-routines. The Bayesian Neural Network is implemented in BNN_train_cross_val.py. You can load and execute the model using BNN_predict.py. Example input files, 1l_atomicPLMF_773structures.csv and C33.csv, are located in the ./input_example directory and can be used to run computations from scratch.
 
-The code in ./2D-BNN contains a few pre-processing sub-routines and the Bayesian Neural Network is implemented in BNN_train_cross_val.py. 
-The model can be loaded and run by BNN_predict.py
-1l_atomicPLMF_773structures.csv and C33.csv in ./input_example can be used as example input file to run the calculations from scratch. 
+# Pre-processing Data Workflow:
 
-Workflow
-Pre-preocessing data:
+1. Making PLMF Bilayers
+1_MakePlmfBilayers.py uses 1l_atomicPLMF_773structures.csv (which contains a comprehensive list of 2D-monolayer descriptors) and C33.csv files to create bilayer descriptors by adding up the fields of each monolayer. Adjust Number_Monolayers to match the number of monolayers included in the PLMF.csv file and set the path to your working folder (it will be created if it does not exist).
 
-1_MakePlmfBilayers.py takes a 1l_atomicPLMF_773structures.csv (which contains the full list of descriptors of 2d-monolayers) and C33.csv files and creates the descriptors of the bilayers by summing the fields of each monolayer.
-Modify: 
-Number_Monolayers  with the number of monolayers included in the PLMF.csv file
-path  to the working folder (it will be created if it does not exist)
+2. Feature Selection
+2a_FeatureSelectionLASSO.py requires the .csv file with the bilayer property values to be used in BNN training and the PLMF.csv file to select relevant bilayer descriptors. This will output a training_set.csv file. Adjust alphas and n_alpha in 2_FeatureSelectionLASSO.py.
 
-2a_FeatureSelectionLASSO.py takes input the .csv file with the values bilayer property that will be used in BNN training
-and the PLMF.csv file to select relevant bilayers descriptors. This will produce a training_set.csv.
-Modify:
-alphas and n_alpha in the 2_FeatureSelectionLASSO.py 
-2b_FeatureSelectionGeneticAlgo.py can be optionally executed if the number of features is too large. 
- 	
+If the number of features is too large, you can optionally execute 2b_FeatureSelectionGeneticAlgo.py.
 
-3_KMeanAnalysis.py takes training.csv file and using a cluster analysis will generate a train and test set choosing representative bilayer structures. 
+3. K-Means Analysis
+3_KMeanAnalysis.py uses the training.csv file and a cluster analysis to generate a train and test set, selecting representative bilayer structures.
 
+4. Creating a Complete Set
+4_MakeCompleteSet.py selects the descriptors listed after 2_FeatureSelectionLASSO.py and creates a PLMF file of the full set of bilayers. Run this script twice as outlined in the comments in MakeCompleteSet.py.
 
-4_MakeCompleteSet.py select the descriptors listed after 2_FeatureSelectionLASSO.py and create a PLMF file of the full set of bilayers. 
-Thisscript shold be executed in two times as explained in the comments in MakeCompleteSet.py
+# Model Optimization:
 
-Model optimization: 
+5. BNN Training and Cross Validation
+5_BnnTrainCrossVal.py is the main code that trains the Bayesian neural network and tests it via cross-validation. It needs a list of descriptors for the entire set used in the extrapolation. This allows for each bilayer descriptor's standardisation using the whole set as a reference.
 
-5_BnnTrainCrossVal.py is the core code and it is used to train the Bayesisn neaural network and then test it by cross-validation.  
-This part needs a list of descriptors for the whole set that will be used in the extrapolation. This allows the standardisation of each bilayer descriptor using the whole set as reference. Therefore, 
+5_BnnTrainCrossVal.py uses COMPLETE_SET.csv and training_test_set.csv as inputs. Changeable parameters include the number of nodes, the number of hidden layers (under # Create the TensorFlow model), n_post (controls the number of trials to create a statistical distribution over the response value), and model_prob (controls the probability of nodes dropout).
 
-5_BnnTrainCrossVal.py takes as input COMPLETE_SET.csv and training_test_set.csv 
-Parameters to change are: number of nodes, number of hidden layers by modifying “# Create the TensorFlow model”
-n_post controls the number of trials are done to create a statistical distribution over the response value. 
-model_prob control the probability of nodes dropout. 
+Loading the Model and Making Predictions:
 
-Load and run the model to make predictions:
-
-6_BnnPredict.py takes the model and the COMPETE_SET.csv to generate a response value for the whole dataset.  
-
-
+6_BnnPredict.py uses the model and COMPETE_SET.csv to generate a response value for the entire dataset.
