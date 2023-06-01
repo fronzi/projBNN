@@ -29,6 +29,6 @@ If the number of features is too large, you can optionally execute 2b_FeatureSel
 
 5_BnnTrainCrossVal.py uses COMPLETE_SET.csv and training_test_set.csv as inputs. Changeable parameters include the number of nodes, the number of hidden layers (under # Create the TensorFlow model), n_post (controls the number of trials to create a statistical distribution over the response value), and model_prob (controls the probability of nodes dropout).
 
-Loading the Model and Making Predictions:
+# Loading the Model and Making Predictions:
 
 6_BnnPredict.py uses the model and COMPETE_SET.csv to generate a response value for the entire dataset.
