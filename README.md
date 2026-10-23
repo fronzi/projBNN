@@ -1,4 +1,21 @@
-# 2D-BNN User Guide
+# 2D-BNN: Bayesian neural networks with active learning for 2D materials
+
+Code accompanying
+
+> M. Fronzi, O. Isayev, D. A. Winkler, J. G. Shapter, A. V. Ellis, P. C. Sherrell,
+> N. A. Shepelin, A. Corletto, M. J. Ford,
+> **"Active learning in Bayesian neural networks for the bandgap predictions of
+> novel Van der Waals heterostructures"**, *Advanced Intelligent Systems* 2100080 (2021).
+> Featured in [Advanced Science News](https://www.advancedsciencenews.com/finding-new-needles-in-a-materials-haystack-using-machine-learning/).
+
+A dropout-based Bayesian neural network predicts the properties of large sets of
+two-dimensional bilayers from monolayer descriptors (PLMF). In the paper, the
+model's predictive uncertainty guides which structures are computed next, so
+accurate predictions across a very large candidate space are reached from a
+small training set. This repository contains the pre-processing, training
+(with cross-validation) and prediction scripts.
+
+## User guide
 
 This guide will help you navigate the 2D-BNN Bayesian Neural Network Python code. This code is designed to predict the properties of large sets of 2-dimensional materials.
 
@@ -32,3 +49,7 @@ If the number of features is too large, you can optionally execute 2b_FeatureSel
 # Loading the Model and Making Predictions:
 
 6_BnnPredict.py uses the model and COMPETE_SET.csv to generate a response value for the entire dataset.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
